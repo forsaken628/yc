@@ -1,0 +1,30 @@
+{
+  "require": {
+    "nesbot/carbon": "~1.18",
+    "fzaninotto/faker": "^1.6",
+    "wenzhixin/bootstrap-table": "1.11.0",
+    "yiisoft/yii2-bootstrap": "*",
+    "bower-asset/bootstrap": "*",
+    "yiisoft/yii2-swiftmailer": "*",
+    "yiisoft/yii2": "*",
+    "ezyang/htmlpurifier": "*",
+    "cebe/markdown": "*",
+    "bower-asset/jquery.inputmask": "*",
+    "bower-asset/punycode": "*",
+    "bower-asset/yii2-pjax": "*",
+    "bower-asset/jquery": "*",
+    "swiftmailer/swiftmailer": "*",
+    "yiisoft/yii2-composer": "*",
+    "symfony/translation": "*",
+    "bower-asset/jquery-validation": "^1.15",
+    "bower-asset/vue": "^1.0",
+    "bower-asset/vue-router": "^0.7.13",
+    "bower-asset/fullcalendar": "^3.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-codeception": "*",
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-faker": "*"
+  }
+}
