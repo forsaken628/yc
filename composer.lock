@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "32ac449c0520ca60e50d5b52b3df44e0",
-    "content-hash": "af0c517e7b7202d57d967acbb666ddd7",
+    "hash": "6c41a59d2e5060c32e16e483f5546972",
+    "content-hash": "c1b87b7f3f3bd66ce9fae066a44089f3",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -55,6 +55,22 @@
                 "responsive",
                 "web"
             ]
+        },
+        {
+            "name": "bower-asset/bootstrap-datetimepicker",
+            "version": "v0.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tarruda/bootstrap-datetimepicker.git",
+                "reference": "c26217db8840e5aa8f56e343ce307581960543c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tarruda/bootstrap-datetimepicker/zipball/c26217db8840e5aa8f56e343ce307581960543c9",
+                "reference": "c26217db8840e5aa8f56e343ce307581960543c9",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
         },
         {
             "name": "bower-asset/fullcalendar",

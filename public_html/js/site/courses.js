@@ -4,6 +4,37 @@
 $(function () {
     var wrapper = $("#wrapper");
 
+    var modal = $("#new-schedule-modal");
+
+    modal.find(".datetimepicker").datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 5
+    });
+
+    modal.find("input:radio").click(function () {
+        if ($.inArray(modal.find("input[name=has_repeat]:checked").val(), ["2", "3"]) == -1) {
+            modal.find("div.weekly").addClass("hidden");
+        } else {
+            modal.find("div.weekly").removeClass("hidden");
+        }
+        if (modal.find("input[name=has_end]:checked").val() == 1) {
+            modal.find("div.end-on").removeClass("hidden");
+        } else {
+            modal.find("div.end-on").addClass("hidden");
+        }
+        if (modal.find("input[name=has_end]:checked").val() == 2) {
+            modal.find("div.end-at").removeClass("hidden");
+        } else {
+            modal.find("div.end-at").addClass("hidden");
+        }
+    });
+
+    modal.find("form").submit(function (e) {
+        e.preventDefault();
+    });
+
     $("table.course").bootstrapTable({
         columns: [
             {
@@ -77,7 +108,14 @@ $(function () {
                                 id: row.id
                             }
                         }
-                    ]
+                    ],
+                    dayClick: function (date, jsEvent, view) {
+
+                        modal.modal("show");
+                        //alert('Clicked on: ' + date.format());
+                        // change the day's background color just for fun
+                        //$(this).css('background-color', 'red');
+                    }
                 });
             }, 0);
             var el = $($("#tpl-detail").html());
@@ -93,7 +131,6 @@ $(function () {
             };
         }
     });
-
 
     mainContentHeightAdjust();
 });

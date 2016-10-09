@@ -1,5 +1,5 @@
-/runtime
-/.idea
+/runtime/
+/.idea/
 /config/db.php
-/public_html/assets
-/vendor
+/public_html/assets/
+/vendor/
