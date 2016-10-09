@@ -19,18 +19,18 @@ use yii\web\ForbiddenHttpException;
  */
 class DefaultController extends Controller
 {
-//    public function behaviors()
-//    {
-//        return [
-//            'access' => [
-//                'class' => AccessControl::className(),
-//                'rules' => [
-//                    [
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                    ],
-//                ],
-//            ],
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
 //            'verbs' => [
 //                'class' => VerbFilter::className(),
 //                'actions' => [
@@ -38,8 +38,8 @@ class DefaultController extends Controller
 //                    'organ' => ['post', 'put'],
 //                ],
 //            ],
-//        ];
-//    }
+        ];
+    }
 
     public function actionUser()
     {
@@ -51,6 +51,12 @@ class DefaultController extends Controller
             case 'POST':
                 $model = new UserForm();
                 return $model->newUser();
+            case 'PUT':
+                $model = new UserForm();
+                return $model->updateUser();
+            case 'DELETE':
+                $model = new UserForm();
+                return $model->disableUser();
             default:
                 throw new BadRequestHttpException();
         }

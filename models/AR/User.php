@@ -120,7 +120,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return self::findOne($id);
+        return self::findOne(['id' => $id, 'is_disable' => 0]);
     }
 
     /**
@@ -142,7 +142,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public static function findByUsername($username)
     {
         //strcasecmp($user['username'], $username) === 0
-        return self::findOne(["username" => strtolower($username)]);
+        return self::findOne(['username' => strtolower($username), 'is_disable' => 0]);
     }
 
 
@@ -200,6 +200,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             $this->hash = Yii::$app->getSecurity()->generatePasswordHash($this->_password);
             Yii::endProfile("hash", __METHOD__);
         });
+        Yii::trace($this->_password, __METHOD__);
         $this->_password = $password;
     }
 

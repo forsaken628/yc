@@ -5,6 +5,7 @@
 $this->title = '我的主页';
 
 ?>
+<img src="/images/ER.png">
 <script type="text/tpl">
 
 <div class="row">

@@ -42,7 +42,7 @@ $this->registerJsFile("/js/site/users.js");
             <div class="tab-pane active">
                 <div class="admin-table">
                     <div class="toolbar">
-                        <a href="#new-admin-modal" data-toggle="modal" class="btn btn-success">
+                        <a data-toggle="modal" class="btn btn-success new-admin-modal">
                             <i class="glyphicon glyphicon-plus"></i> 添加
                         </a>
                     </div>
@@ -61,6 +61,7 @@ $this->registerJsFile("/js/site/users.js");
                                         <div class="row">
                                             <div class="col-md-8 col-md-offset-2">
                                                 <input type="hidden" name="type" value="1"/>
+                                                <input type="hidden" name="id"/>
                                                 <div class="form-group">
                                                     <label class="control-label">用户名</label>
                                                     <input class="form-control input-sm" name="username">
@@ -113,6 +114,7 @@ $this->registerJsFile("/js/site/users.js");
                                         <div class="row">
                                             <div class="col-md-8 col-md-offset-2">
                                                 <input type="hidden" name="type" value="2"/>
+                                                <input type="hidden" name="id"/>
                                                 <div class="form-group">
                                                     <label class="control-label">用户名</label>
                                                     <input class="form-control input-sm" name="username">
@@ -165,6 +167,7 @@ $this->registerJsFile("/js/site/users.js");
                                         <div class="row">
                                             <div class="col-md-8 col-md-offset-2">
                                                 <input type="hidden" name="type" value="3"/>
+                                                <input type="hidden" name="id"/>
                                                 <div class="form-group">
                                                     <label class="control-label">用户名</label>
                                                     <input class="form-control input-sm" name="username">
@@ -203,7 +206,6 @@ $this->registerJsFile("/js/site/users.js");
         </div>
     </div>
 </section>
-
 
 
 <script type="text/template" id="tpl-admin-operate">

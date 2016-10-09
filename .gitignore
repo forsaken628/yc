@@ -1,4 +1,5 @@
 /runtime
 /.idea
 /config/db.php
-/web/assets
+/public_html/assets
+/vendor

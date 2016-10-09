@@ -45,15 +45,15 @@ class UserForm extends Model
         switch (Yii::$app->request->post('type')) {
             case User::USER_ADMIN:
                 $this->setScenario('admin');
-                $model = new Admin();
+                $detail = new Admin();
                 break;
             case User::USER_TEACHER:
                 $this->setScenario('teacher');
-                $model = new Teacher();
+                $detail = new Teacher();
                 break;
             case User::USER_STUDENT:
                 $this->setScenario('student');
-                $model = new Student();
+                $detail = new Student();
                 break;
             default:
                 throw new BadRequestHttpException();
@@ -62,18 +62,61 @@ class UserForm extends Model
         $this->attributes = Yii::$app->request->post();
         $this->type = (int)$this->type;
         $user->attributes = $this->attributes;
-        $model->attributes = $this->attributes;
-        if ($this->validate() && $user->validate() && $model->validate()) {
-            $user->save();
-            $model->id = $user->id;
-            $model->save();
+        $detail->attributes = $this->attributes;
+        if ($this->validate() && $user->validate() && $detail->validate()) {
+            $user->save(false);
+            $detail->id = $user->id;
+            $detail->save(false);
         } else {
             Yii::$app->response->statusCode = 400;
             $this->addErrors($user->errors);
-            $this->addErrors($model->errors);
+            $this->addErrors($detail->errors);
             return ['errors' => $this->errors];
         }
-        return ArrayHelper::merge($user->toArray(), $model->toArray());
+        return ArrayHelper::merge($user->toArray(), $detail->toArray());
     }
 
+    public function updateUser()
+    {
+        $user = User::findOne(Yii::$app->request->post('id'));
+        switch ($user->type) {
+            case User::USER_ADMIN:
+                $this->setScenario('admin');
+                $detail = $user->admin;
+                break;
+            case User::USER_TEACHER:
+                $this->setScenario('teacher');
+                $detail = $user->teacher;
+                break;
+            case User::USER_STUDENT:
+                $this->setScenario('student');
+                $detail = $user->student;
+                break;
+        }
+        $attributes = Yii::$app->request->post();
+        unset($attributes['type']);
+        unset($attributes['id']);
+        if (empty($attributes['password'])) {
+            unset($attributes['password']);
+        }
+        $user->attributes = $attributes;
+        $detail->attributes = $attributes;
+        if ($user->validate() && $detail->validate()) {
+            $user->save(false);
+            $detail->save(false);
+        } else {
+            Yii::$app->response->statusCode = 400;
+            $this->addErrors($user->errors);
+            $this->addErrors($detail->errors);
+            return ['errors' => $this->errors];
+        }
+        return ArrayHelper::merge($user->toArray(), $detail->toArray());
+    }
+
+    public function disableUser()
+    {
+        $user = User::findOne(Yii::$app->request->post('id'));
+        $user->is_disable = 1;
+        return $user->save();
+    }
 }
